@@ -1,0 +1,68 @@
+{
+    "Front": [
+        "black",
+        "black",
+        "black",
+        "black",
+        "white",
+        "black",
+        "black",
+        "black",
+        "black"
+    ],
+    "Back": [
+        "black",
+        "black",
+        "black",
+        "white",
+        "yellow",
+        "black",
+        "white",
+        "white",
+        "black"
+    ],
+    "Left": [
+        "black",
+        "black",
+        "black",
+        "black",
+        "red",
+        "black",
+        "black",
+        "black",
+        "black"
+    ],
+    "Right": [
+        "black",
+        "black",
+        "black",
+        "black",
+        "orange",
+        "black",
+        "black",
+        "black",
+        "black"
+    ],
+    "Top": [
+        "black",
+        "black",
+        "black",
+        "white",
+        "green",
+        "black",
+        "black",
+        "black",
+        "black"
+    ],
+    "Bottom": [
+        "black",
+        "black",
+        "black",
+        "black",
+        "blue",
+        "black",
+        "black",
+        "black",
+        "black"
+    ]
+}
