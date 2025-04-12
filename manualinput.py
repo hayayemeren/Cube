@@ -1,12 +1,13 @@
 import tkinter as tk
 from tkinter import messagebox
 import json
+import kociemba
 
 class CubeColorInput:
     def __init__(self, root):
         self.root = root
         self.root.title("Manual Cube Color Input")
-        self.root.geometry("800x600")
+        self.root.geometry("1280x900")
         
         self.colors = ["white", "yellow", "red", "orange", "blue", "green"]
         self.selected_color = tk.StringVar(value=self.colors[0])
@@ -17,7 +18,7 @@ class CubeColorInput:
         self.create_color_buttons()
         self.create_cube_grids()
         self.create_erase_button()
-        self.create_save_button()
+        self.create_action_buttons()
     
     def create_color_buttons(self):
         frame = tk.Frame(self.root)
@@ -48,9 +49,12 @@ class CubeColorInput:
         erase_btn = tk.Button(self.root, text="Erase All Colors", command=self.erase_colors, height=2, width=20)
         erase_btn.pack(pady=10)
     
-    def create_save_button(self):
+    def create_action_buttons(self):
         save_btn = tk.Button(self.root, text="Save Colors", command=self.save_colors, height=2, width=20)
         save_btn.pack(pady=10)
+
+        solve_btn = tk.Button(self.root, text="Solve Cube", command=lambda: self.solve_from_json("cube_colors.json"), height=2, width=20)
+        solve_btn.pack(pady=10)
     
     def color_square(self, button):
         button.config(bg=self.selected_color.get())
@@ -74,6 +78,54 @@ class CubeColorInput:
             json.dump(color_data, file, indent=4)
         
         messagebox.showinfo("Saved", "Cube colors have been saved successfully!")
+
+    def solve_from_json(self, json_path="cube_colors.json"):
+        try:
+            with open(json_path, "r") as file:
+                cube_data = json.load(file)
+
+            # Map file face names to Kociemba face letters
+            face_order = {
+                'Top': 'U',
+                'Right': 'R',
+                'Front': 'F',
+                'Bottom': 'D',
+                'Left': 'L',
+                'Back': 'B'
+            }
+
+            # Use center colors to map actual face colors
+            center_colors = {}
+            for face, squares in cube_data.items():
+                center_color = squares[4]  # center piece is always at index 4
+                center_colors[center_color] = face_order[face]
+
+            # Build the full facelet string in URFDLB order
+            facelet_string = ""
+            kociemba_order = ['Top', 'Right', 'Front', 'Bottom', 'Left', 'Back']
+
+            for face in kociemba_order:
+                if face == "Top":
+                    for color in cube_data[face]:
+                        face_label = center_colors.get(color, 'X')
+                        facelet_string += face_label
+                    facelet_string = facelet_string[::-1]
+                else:
+                    for color in cube_data[face]:
+                        face_label = center_colors.get(color, 'X')
+                        facelet_string += face_label
+            
+            if 'X' in facelet_string or len(facelet_string) != 54:
+                raise ValueError("Color mapping incomplete or cube data invalid.")
+
+            # Solve and show result
+            solution = kociemba.solve(facelet_string)
+            messagebox.showinfo("Cube Solution", solution)
+            return solution
+
+        except Exception as e:
+            messagebox.showerror("Error", f"Could not solve the cube:\n{e}")
+            return None
 
 if __name__ == "__main__":
     root = tk.Tk()

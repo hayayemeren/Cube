@@ -1,68 +1,68 @@
 {
     "Front": [
-        "black",
-        "black",
-        "black",
-        "black",
+        "blue",
+        "blue",
+        "yellow",
+        "yellow",
         "white",
-        "black",
-        "black",
-        "black",
-        "black"
+        "orange",
+        "blue",
+        "blue",
+        "red"
     ],
     "Back": [
-        "black",
-        "black",
-        "black",
-        "white",
-        "yellow",
-        "black",
-        "white",
-        "white",
-        "black"
-    ],
-    "Left": [
-        "black",
-        "black",
-        "black",
-        "black",
-        "red",
-        "black",
-        "black",
-        "black",
-        "black"
-    ],
-    "Right": [
-        "black",
-        "black",
-        "black",
-        "black",
-        "orange",
-        "black",
-        "black",
-        "black",
-        "black"
-    ],
-    "Top": [
-        "black",
-        "black",
-        "black",
+        "green",
         "white",
         "green",
-        "black",
-        "black",
-        "black",
-        "black"
+        "blue",
+        "yellow",
+        "green",
+        "white",
+        "orange",
+        "orange"
+    ],
+    "Left": [
+        "white",
+        "green",
+        "yellow",
+        "yellow",
+        "red",
+        "red",
+        "blue",
+        "orange",
+        "yellow"
+    ],
+    "Right": [
+        "red",
+        "yellow",
+        "yellow",
+        "yellow",
+        "orange",
+        "white",
+        "white",
+        "red",
+        "green"
+    ],
+    "Top": [
+        "green",
+        "red",
+        "red",
+        "blue",
+        "green",
+        "red",
+        "orange",
+        "green",
+        "orange"
     ],
     "Bottom": [
-        "black",
-        "black",
-        "black",
-        "black",
+        "orange",
+        "orange",
         "blue",
-        "black",
-        "black",
-        "black",
-        "black"
+        "white",
+        "blue",
+        "white",
+        "white",
+        "green",
+        "red"
     ]
 }
