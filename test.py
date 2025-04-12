@@ -1,8 +1,13 @@
-# notation is  U R F D L B
+# notation is  U R F D L B take forward as white up as blue right as red 
 
 import kociemba
 
-solution = kociemba.solve("BRLFURDDDLBUDRLBURFFFLFBRLRUDDUDBFLULRRRLBUFBBUDFBDFUL")
+solution = kociemba.solve("UDDUUDUUD" \
+                          "RRLRRLRLL" \
+                          "FFBBFFBBF" \
+                          "UUDUDDUDD" \
+                          "RLLLLRRRL" \
+                          "BBFBBFFFB")
 
 print(solution)
 
