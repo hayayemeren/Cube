@@ -7,7 +7,7 @@ class CubeColorInput:
     def __init__(self, root):
         self.root = root
         self.root.title("Manual Cube Color Input")
-        self.root.geometry("1280x900")
+        self.root.geometry("1280x1280")
         
         self.colors = ["white", "yellow", "red", "orange", "blue", "green"]
         self.selected_color = tk.StringVar(value=self.colors[0])
@@ -31,20 +31,40 @@ class CubeColorInput:
     def create_cube_grids(self):
         self.grid_frame = tk.Frame(self.root)
         self.grid_frame.pack(pady=20)
-        
-        for face in range(6):
-            face_label = tk.Label(self.grid_frame, text=self.face_names[face], font=("Arial", 12, "bold"))
-            face_label.grid(row=(face // 3) * 4, column=(face % 3) * 4 + 1, pady=5, columnspan=3)
-            
+
+        # Define the layout positions for each face (start row bumped by +1)
+        face_positions = {
+            "Top": (1, 4),
+            "Left": (4, 0),
+            "Front": (4, 4),
+            "Right": (4, 8),
+            "Back": (4, 12),
+            "Bottom": (7, 4),
+        }
+
+        for face_index, face_name in enumerate(self.face_names):
+            if face_name not in face_positions:
+                continue
+
+            start_row, start_col = face_positions[face_name]
+
             for row in range(3):
                 for col in range(3):
-                    bg_color = "black" if not (row == 1 and col == 1) else self.middle_colors[face]
-                    btn = tk.Button(self.grid_frame, width=6, height=3, bg=bg_color)
-                    btn.config(command=lambda b=btn: self.color_square(b))
-                    btn.grid(row=(face // 3) * 4 + row + 1, column=(face % 3) * 4 + col, padx=5, pady=5)
-                    
-                    self.squares[face].append((btn, row, col))  # Store row and col info
-    
+                    if row == 1 and col == 1:
+                        # Center square — use label with face name
+                        label = tk.Label(
+                            self.grid_frame, text=face_name, width=6, height=3,
+                            bg=self.middle_colors[face_index], font=("Arial", 10, "bold")
+                        )
+                        label.grid(row=start_row + row, column=start_col + col, padx=2, pady=2)
+                        self.squares[face_index].append((label, row, col))
+                    else:
+                        # Regular button squares
+                        btn = tk.Button(self.grid_frame, width=6, height=3, bg="black")
+                        btn.config(command=lambda b=btn: self.color_square(b))
+                        btn.grid(row=start_row + row, column=start_col + col, padx=2, pady=2)
+                        self.squares[face_index].append((btn, row, col))
+
     def create_erase_button(self):
         erase_btn = tk.Button(self.root, text="Erase All Colors", command=self.erase_colors, height=2, width=20)
         erase_btn.pack(pady=10)
@@ -104,16 +124,10 @@ class CubeColorInput:
             facelet_string = ""
             kociemba_order = ['Top', 'Right', 'Front', 'Bottom', 'Left', 'Back']
 
-            for face in kociemba_order:
-                if face == "Top":
-                    for color in cube_data[face]:
-                        face_label = center_colors.get(color, 'X')
-                        facelet_string += face_label
-                    facelet_string = facelet_string[::-1]
-                else:
-                    for color in cube_data[face]:
-                        face_label = center_colors.get(color, 'X')
-                        facelet_string += face_label
+            for face in kociemba_order:              
+                for color in cube_data[face]:
+                    face_label = center_colors.get(color, 'X')
+                    facelet_string += face_label
             
             if 'X' in facelet_string or len(facelet_string) != 54:
                 raise ValueError("Color mapping incomplete or cube data invalid.")
@@ -121,6 +135,13 @@ class CubeColorInput:
             # Solve and show result
             solution = kociemba.solve(facelet_string)
             messagebox.showinfo("Cube Solution", solution)
+            solution_data = {
+                "facelet_string": facelet_string,
+                "solution": solution
+            }
+            with open("cube_solution.json", "w") as f:
+                json.dump(solution_data, f, indent=4)
+
             return solution
 
         except Exception as e:
