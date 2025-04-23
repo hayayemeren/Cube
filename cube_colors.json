@@ -1,68 +1,68 @@
 {
     "Front": [
-        "blue",
-        "blue",
-        "yellow",
-        "yellow",
-        "white",
         "orange",
         "blue",
         "blue",
-        "red"
+        "white",
+        "white",
+        "green",
+        "red",
+        "yellow",
+        "green"
     ],
     "Back": [
-        "green",
-        "white",
-        "green",
-        "blue",
         "yellow",
-        "green",
+        "yellow",
+        "yellow",
+        "yellow",
+        "yellow",
+        "yellow",
+        "red",
         "white",
-        "orange",
-        "orange"
+        "blue"
     ],
     "Left": [
-        "white",
+        "red",
         "green",
-        "yellow",
-        "yellow",
-        "red",
-        "red",
         "blue",
+        "red",
+        "red",
+        "red",
         "orange",
+        "white",
         "yellow"
     ],
     "Right": [
+        "white",
+        "blue",
+        "orange",
         "red",
-        "yellow",
-        "yellow",
-        "yellow",
+        "orange",
+        "orange",
         "orange",
         "white",
-        "white",
-        "red",
-        "green"
+        "white"
     ],
     "Top": [
+        "green",
+        "green",
+        "green",
         "orange",
         "green",
         "orange",
+        "white",
         "red",
-        "green",
-        "blue",
-        "red",
-        "red",
-        "green"
+        "red"
     ],
     "Bottom": [
-        "orange",
-        "orange",
+        "blue",
         "blue",
         "white",
+        "orange",
         "blue",
-        "white",
-        "white",
+        "blue",
+        "yellow",
         "green",
-        "red"
+        "green"
     ]
 }

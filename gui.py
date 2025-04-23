@@ -28,7 +28,7 @@ btn_visual_detection.pack(pady=10)
 btn_manual_input = tk.Button(root, text="Run Manual Input", command=run_manual_input, height=2, width=20)
 btn_manual_input.pack(pady=10)
 
-btn_manual_input = tk.Button(root, text="Shuffle", command=run_shuffle, height=2, width=20)
+btn_manual_input = tk.Button(root, text="Run  Shuffle", command=run_shuffle, height=2, width=20)
 btn_manual_input.pack(pady=10)
 
 # Run the GUI loop
