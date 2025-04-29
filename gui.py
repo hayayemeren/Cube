@@ -13,6 +13,7 @@ def run_manual_input():
 
 def run_shuffle():
     subprocess.run(["python3", "shuffle.py"])
+    
 # Create the main window
 root = tk.Tk()
 root.title("Rubik's Cube Tools")

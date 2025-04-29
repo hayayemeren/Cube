@@ -1,21 +1,41 @@
 import random
 import json
-from tkinter import messagebox
+from tkinter import messagebox, Tk
 
-motors = [1, 2, 3, 4, 5]
-times_turn = []
-shuffle_data = {"Motor 1": None,
-                "Motor 2": None,
-                "Motor 3": None,
-                "Motor 4": None,
-                "Motor 5": None,}
+def generate_shuffle_data(motor_count=6, min_turns=1, max_turns=5):
+    """Generate random turn values for each motor."""
+    shuffle_data = {
+        f"Motor {i + 1}": random.randint(min_turns, max_turns)
+        for i in range(motor_count)
+    }
+    return shuffle_data
 
-for motor in range(len(motors)):
+def save_to_json(data, filename="cube_shuffle.json"):
+    """Save the shuffle data to a JSON file."""
+    with open(filename, "w") as f:
+        json.dump(data, f, indent=4)
 
-    times_turn.append(random.randint(1,5))
-    shuffle_data[f"Motor {motor + 1}"] = times_turn[motor]
-     
-with open("cube_shuffle.json", "w") as f:
-                json.dump(shuffle_data, f, indent=4)
+def format_for_messagebox(data):
+    """Format the dictionary into a neat string for display."""
+    return "\n".join(f"{motor}: {turns} turns" for motor, turns in data.items())
 
-messagebox.showinfo("Shuffle Data", shuffle_data)
+def main():
+    # GUI setup for messagebox
+    root = Tk()
+    root.withdraw()  # Hide the main Tk window
+
+    # Step 1: Generate shuffle data
+    shuffle_data = generate_shuffle_data(motor_count=6)
+
+    # Step 2: Save to JSON
+    save_to_json(shuffle_data)
+
+    # Step 3: Display in message box
+    display_text = format_for_messagebox(shuffle_data)
+    messagebox.showinfo("Cube Shuffle Generated", display_text)
+
+if __name__ == "__main__":
+    main()
+
+
+# There w'll be added motor run functions to turn the motors that much 
