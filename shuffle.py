@@ -38,4 +38,3 @@ if __name__ == "__main__":
     main()
 
 
-# There w'll be added motor run functions to turn the motors that much 

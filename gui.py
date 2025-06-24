@@ -13,11 +13,14 @@ def run_manual_input():
 
 def run_shuffle():
     subprocess.run(["python3", "shuffle.py"])
+
+def run_solve():
+    subprocess.run(["python3", "solve.py"])
     
 # Create the main window
 root = tk.Tk()
 root.title("Rubik's Cube Tools")
-root.geometry("200x300")
+root.geometry("200x350")
 
 # Create buttons
 btn_calibration = tk.Button(root, text="Run Calibration", command=run_calibration, height=2, width=20)
@@ -30,6 +33,9 @@ btn_manual_input = tk.Button(root, text="Run Manual Input", command=run_manual_i
 btn_manual_input.pack(pady=10)
 
 btn_manual_input = tk.Button(root, text="Run  Shuffle", command=run_shuffle, height=2, width=20)
+btn_manual_input.pack(pady=10)
+
+btn_manual_input = tk.Button(root, text="Run  Solve", command=run_solve, height=2, width=20)
 btn_manual_input.pack(pady=10)
 
 # Run the GUI loop
