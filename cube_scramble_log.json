@@ -1,0 +1,25 @@
+{
+    "scramble_string": "B2 D' F2 D F' L U F R2 U' F2 R D' R' F R B R U2 R'",
+    "moves": [
+        "B2",
+        "D'",
+        "F2",
+        "D",
+        "F'",
+        "L",
+        "U",
+        "F",
+        "R2",
+        "U'",
+        "F2",
+        "R",
+        "D'",
+        "R'",
+        "F",
+        "R",
+        "B",
+        "R",
+        "U2",
+        "R'"
+    ]
+}

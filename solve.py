@@ -3,7 +3,7 @@ import socket
 import time
 
 # --- Pi Connection Details ---
-PI_IP_ADDRESS = '192.168.1.100' # !!! REPLACE WITH YOUR RASPBERRY PI'S IP ADDRESS !!!
+PI_IP_ADDRESS = '192.168.131.192' # !!! REPLACE WITH YOUR RASPBERRY PI'S IP ADDRESS !!!
 PI_PORT = 65432                 # Choose an unused port number (must match Pi's motor_executor.py)
 
 # --- Kociemba Move to Motor Command Mapping ---
@@ -11,29 +11,29 @@ PI_PORT = 65432                 # Choose an unused port number (must match Pi's 
 # It MUST be IDENTICAL to the mapping in your motor_executor.py on the Pi.
 # (The motor_executor.py code below has been confirmed to match this mapping)
 KOCIEMBA_TO_MOTOR_MAP = {
-    "U":   (0, 'CW',  2),  # Up face
-    "U'":  (0, 'CCW', 2),
-    "U2":  (0, 'CW',  4),
+    "U":   (0, 'CW',  1),  # Up face
+    "U'":  (0, 'CCW', 1),
+    "U2":  (0, 'CW',  2),
 
-    "R":   (1, 'CW',  2),  # Right face
-    "R'":  (1, 'CCW', 2),
-    "R2":  (1, 'CW',  4),
+    "R":   (1, 'CW',  1),  # Right face
+    "R'":  (1, 'CCW', 1),
+    "R2":  (1, 'CW',  2),
 
-    "F":   (2, 'CW',  2),  # Front face
-    "F'":  (2, 'CCW', 2),
-    "F2":  (2, 'CW',  4),
+    "F":   (2, 'CW',  1),  # Front face
+    "F'":  (2, 'CCW', 1),
+    "F2":  (2, 'CW',  2),
 
-    "D":   (3, 'CW',  2),  # Down face
-    "D'":  (3, 'CCW', 2),
-    "D2":  (3, 'CW',  4),
+    "D":   (3, 'CW',  1),  # Down face
+    "D'":  (3, 'CCW', 1),
+    "D2":  (3, 'CW',  2),
 
-    "L":   (4, 'CW',  2),  # Left face
-    "L'":  (4, 'CCW', 2),
-    "L2":  (4, 'CW',  4),
+    "L":   (4, 'CW',  1),  # Left face
+    "L'":  (4, 'CCW', 1),
+    "L2":  (4, 'CW',  2),
 
-    "B":   (5, 'CW',  2),  # Back face
-    "B'":  (5, 'CCW', 2),
-    "B2":  (5, 'CW',  4),
+    "B":   (5, 'CW',  1),  # Back face
+    "B'":  (5, 'CCW', 1),
+    "B2":  (5, 'CW',  2),
 }
 
 
@@ -101,7 +101,7 @@ def main():
             print("Robot execution sequence complete.")
 
     except socket.error as e:
-        print(f"Network connection error: {e}. Ensure Raspberry Pi is powered on, running motor_executor.py, and reachable at {PI_IP_ADDRESS}:{PI_PORT}.")
+        print(f"Network connection error: {e}. Ensure Raspberry Pi is powered on, running solve.py, and reachable at {PI_IP_ADDRESS}:{PI_PORT}.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
 

@@ -1,8 +1,25 @@
 {
-    "Motor 1": 3,
-    "Motor 2": 3,
-    "Motor 3": 4,
-    "Motor 4": 4,
-    "Motor 5": 2,
-    "Motor 6": 3
+    "scramble_string": "D' F R D' L U2 B' R B D B2 U2 L2 F' U2 R B2 D' R' F2",
+    "moves": [
+        "D'",
+        "F",
+        "R",
+        "D'",
+        "L",
+        "U2",
+        "B'",
+        "R",
+        "B",
+        "D",
+        "B2",
+        "U2",
+        "L2",
+        "F'",
+        "U2",
+        "R",
+        "B2",
+        "D'",
+        "R'",
+        "F2"
+    ]
 }
